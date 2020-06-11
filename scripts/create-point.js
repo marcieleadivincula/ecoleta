@@ -1,9 +1,9 @@
 function populateUFs() {
-  const ufSelect = document.querySelector("select[name=uf]");
+  const ufSelect = document.querySelector("[name=uf]");
 
   fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
-    .then((resp) => resp.json())
-    .then((states) => {
+    .then(resp => resp.json())
+    .then(states => {
       for (const state of states) {
         ufSelect.innerHTML += `<option value="${state.id}">${state.nome}</option>`;
       }
@@ -27,8 +27,8 @@ function getCities(event) {
   citySelect.disabled = true;
 
   fetch(url)
-    .then((resp) => resp.json())
-    .then((cities) => {
+    .then(resp => resp.json())
+    .then(cities => {
       for (const city of cities) {
         citySelect.innerHTML += `<option value="${city.id}">${city.nome}</option>`;
       }
@@ -79,6 +79,8 @@ function handleSelectedItem(event) {
   //atualizar o campo escondido com os itens selecionados
 }
 
+
+
 //Dessa forma está detalhada, mas em cima está simplificada
 // const alreadySelected = selectedItems.findIndex(function (item) {
 //     const itemFound = item === itemId;
@@ -91,5 +93,4 @@ function handleSelectedItem(event) {
 // });
 
 //fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados").then(function(res) { return res.json()}).then(function(data){console.log(data)})
-
 //resp => resp.json() mesmo que function(res) { return res.json()
